@@ -1,0 +1,105 @@
+#include <iostream>
+#include <string>
+#include <iomanip>  // For setting decimal precision
+
+class Notebook {
+private:
+    double width;
+    double height;
+    int pages;
+    std::string coverDesign;
+    std::string coverType;
+    std::string format;
+    std::string paperColor;
+    std::string paperType;
+
+public:
+    // Constructor to initialize all attributes
+    Notebook(double const w, double const h, int const p, std::string const& cd, 
+             std::string const& ct, std::string const& f, std::string const& pc, std::string const& pt) 
+        : width(w), height(h), pages(p), coverDesign(cd), coverType(ct), format(f), paperColor(pc), paperType(pt) {}
+
+    // Getter and Setter for width
+    double getWidth() const { return width; }
+    void setWidth(double const w) { width = w; }
+
+    // Getter and Setter for height
+    double getHeight() const { return height; }
+    void setHeight(double const h) { height = h; }
+
+    // Getter and Setter for pages
+    int getPages() const { return pages; }
+    void setPages(int const p) { pages = p; }
+
+    // Getter and Setter for coverDesign
+    std::string getCoverDesign() const { return coverDesign; }
+    void setCoverDesign(std::string const& cd) { coverDesign = cd; }
+
+    // Getter and Setter for coverType
+    std::string getCoverType() const { return coverType; }
+    void setCoverType(std::string const& ct) { coverType = ct; }
+
+    // Getter and Setter for format
+    std::string getFormat() const { return format; }
+    void setFormat(std::string const& f) { format = f; }
+
+    // Getter and Setter for paperColor
+    std::string getPaperColor() const { return paperColor; }
+    void setPaperColor(std::string const& pc) { paperColor = pc; }
+
+    // Getter and Setter for paperType
+    std::string getPaperType() const { return paperType; }
+    void setPaperType(std::string const& pt) { paperType = pt; }
+
+    // toString function to display the notebook details in the required format
+    void toString() const {
+        std::cout << std::fixed << std::setprecision(6);
+        std::cout << "Dimensions: " << getWidth() << "x" << getHeight() << std::endl;
+        std::cout << "Number of pages: " << getPages() << std::endl;
+        std::cout << "Paper Type: " << getPaperType() << std::endl;
+        std::cout << "Paper Color: " << getPaperColor() << std::endl;
+        std::cout << "Page Format: " << getFormat() << std::endl;
+        std::cout << "Cover Type: " << getCoverType() << std::endl;
+        std::cout << "Cover Design: " << getCoverDesign() << std::endl;
+    }
+};
+
+int main() {
+    // Declare variables for user input
+    std::string coverDesign, coverType, paperColor, format, paperType;
+    int pages;
+    double width, height;
+
+    // Collecting user input
+    std::cout << "Enter the name of the cover color or design: ";
+    std::getline(std::cin, coverDesign);
+
+    std::cout << "Enter the cover type: ";
+    std::getline(std::cin, coverType);
+
+    std::cout << "Enter the paper color: ";
+    std::getline(std::cin, paperColor);
+
+    std::cout << "Enter the notebook format: ";
+    std::getline(std::cin, format);
+
+    std::cout << "Enter the type of paper: ";
+    std::getline(std::cin, paperType);
+
+    std::cout << "Enter the number of pages: ";
+    std::cin >> pages;
+
+    std::cout << "Enter the notebook height: ";
+    std::cin >> height;
+
+    std::cout << "Enter the notebook width: ";
+    std::cin >> width;
+
+    // Create a Notebook object with the user inputs
+    Notebook myNotebook(width, height, pages, coverDesign, coverType, format, paperColor, paperType);
+
+    // Display the created notebook details
+    std::cout << "\nHere is your notebook:" << std::endl;
+    myNotebook.toString();
+
+    return 0;
